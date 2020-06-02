@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quick Album - powered by Cloudinary</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap" />
+  
+  <style>
+    body{
+      box-sizing: border-box;
+      background: #eeeeee;
+    }
+
+    h1{
+      font-family:'Playfair Display', serif;
+      font-weight: 700;
+      font-size:  3.052em;
+    }
+
+    h2{
+      font-family:'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 1.563em ;
+    }
+    
+    .albumcontents{
+      background: #330000;
+    }
+    .imageitem{
+      background: #330000;
+    }
+
+    img{
+      background: #330000;
+      border-radius: 10%;
+      margin:1px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="albumheader">
+    <h1 id="albumtitle">Album Title Holder</h1>
+    <h2 id="albumdescription">If you can see this.... there has been a loading error</h2>
+  </div>
+  
+  <div id="albumcontents">
+  </div>
+  
+  
+  
+  <script>  
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const album_name = urlParams.get('album');
+  const cloud_name = urlParams.get('cloud');
+  const lang_preference = urlParams.get('lang');
+  document.writeln(" ::: " + album_name + " :: " + cloud_name);
+
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+
+     if((album_name) && (cloud_name)){
+         loadPageDetails();
+         loadImages();
+        };
+
+  });
+
+  function loadPageDetails() {
+      var album_details_url = "https://res.cloudinary.com/" + cloud_name + "/raw/upload/" + album_name + "-album-details.json";
+
+      const title_object = document.getElementById('albumtitle');
+      const description_object = document.getElementById('albumdescription');
+
+      fetch(album_details_url)
+        .then((resp) => resp.json());
+        .then(function(data) {
+            let pageDetails = data;
+            title_object.innerHTML = pageDetails.title;
+            description_object.innerHTML = pageDetails.description;
+          })
+        .catch(function() {
+          // todo : catch errors
+        });
+  }
+
+
+  function loadImages() {
+      var album_contents_url = "https://res.cloudinary.com/" + cloud_name + "/image/list/" + album_name + ".json";
+      const contents_object = document.getElementById('albumcontents');
+
+      fetch(album_contents_url)
+        .then((resp) => resp.json());
+        .then(function(data) {
+
+            let imagelist = data.resources; 
+            return imagelist.map(function(imageitem) { 
+              img = document.createElement("img"); 
+              img.src = "https://res.cloudinary.com/quickalbum/image/upload/w_300,h_300,c_fill/e_improve/" + imageitem.public_id + "." + imageitem.format; 
+
+              if(lang_preference){            
+                altref = "alt_" + lang_preference;
+                // todo: consider having an array of valid language codes to check agaisnt
+              }else{
+                //if no preference default to english
+                altref = "alt_EN"
+              } 
+
+              if(imageitem.context){
+              console.log(JSON.stringify(imageitem));
+                img.alt = imageitem.context.custom[altref];
+                img.title = imageitem.context.custom[altref];
+              };
+
+              img.class = "imageitem"
+              contents_object.appendChild(img);
+            })
+        .catch(function(error) {
+              console.log(error);
+        });
+      }); 
+  };
+
+  </script>  
+  
+</body>
+</html>
