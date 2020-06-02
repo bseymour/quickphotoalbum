@@ -99,7 +99,7 @@
             let imagelist = data.resources; 
             return imagelist.map(function(imageitem) { 
               img = document.createElement("img"); 
-              img.src = "https://res.cloudinary.com/quickalbum/image/upload/w_300,h_300,c_fill/e_improve/" + imageitem.public_id + "." + imageitem.format; 
+              img.src = "https://res.cloudinary.com/" + cloud_name + "/image/upload/w_300,h_300,c_fill/e_improve/" + imageitem.public_id + "." + imageitem.format; 
 
               if(lang_preference){            
                 altref = "alt_" + lang_preference;
