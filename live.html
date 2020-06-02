@@ -93,7 +93,7 @@
       const contents_object = document.getElementById('albumcontents');
 
       fetch(album_contents_url)
-        .then((resp) => resp.json());
+        .then((resp) => resp.json())
         .then(function(data) {
 
             let imagelist = data.resources; 
