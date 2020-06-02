@@ -76,7 +76,7 @@
       const description_object = document.getElementById('albumdescription');
 
       fetch(album_details_url)
-        .then((resp) => resp.json());
+        .then((resp) => resp.json())
         .then(function(data) {
             let pageDetails = data;
             title_object.innerHTML = pageDetails.title;
