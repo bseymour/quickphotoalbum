@@ -55,7 +55,8 @@
 
   const urlParams = new URLSearchParams(window.location.search);
   const album_name = urlParams.get('album');
-  const cloud_name = urlParams.get('cloud');
+  //const cloud_name = urlParams.get('cloud');
+  const cloud_name = 'quickalbum';
   const lang_preference = urlParams.get('lang');
   document.writeln(" ::: " + album_name + " :: " + cloud_name);
 
