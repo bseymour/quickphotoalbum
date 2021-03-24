@@ -1,7 +1,8 @@
 # Quick Photo Album
 A front-end-only approach to creating quick photo albums, powered by Cloudinary for image management, organisation, manipulation, optimisation and delivery.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fbseymour%2Fquickphotoalbum)
+Live example : [https://quickphotoalbum.vercel.app/](https://quickphotoalbum.vercel.app/)
+^^ Try searching for: cars, sunsets or motorbikes
 
 1) The page initially loads a placeholder tags and content
 2) Querystring parameter for 'album' drives the page logic
@@ -9,6 +10,9 @@ A front-end-only approach to creating quick photo albums, powered by Cloudinary 
 4) JSON response is returned, and parsed to manipulate the DOM accordingly, including image requests
 5) Images are subsequently requested from Cloudinary
 6) Album details are managed via a seperate .json file {album}-album-details.json
+
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fbseymour%2Fquickphotoalbum)
 
 
 ** Notes **
