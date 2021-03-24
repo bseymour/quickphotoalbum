@@ -25,7 +25,7 @@ To use with your own account, make 1 change :
 live.html 
 62: const cloud_name = 'quickalbum'; 
 ^^ Change this to your Cloudinary cloudname ^^
-and ensure you have list API enabled
+and ensure you have list API enabled  
 ++++++++++++++++++++++++++++  
 
 
