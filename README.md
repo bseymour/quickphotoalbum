@@ -17,8 +17,8 @@ Live example : [https://quickphotoalbum.vercel.app/](https://quickphotoalbum.ver
 
 ** Notes **
 1) Cloudinary provides generous free accounts which could be sufficient to power many projects, but if your storage, bandwidth or transforms exceed the available free credits, there are likely to be costs in utilising the service further 
-2) /list API is NOT enabled by default on Cloudinary accounts
-
+2) /list API is NOT enabled by default on Cloudinary accounts. [Read more about the list API](https://cloudinary.com/documentation/advanced_url_delivery_options#client_side_resources)
+3) Deploying to services such as Netlify or Vercel can make hosting this project quick and easy, and while both have generous free tiers, please review the limitations and constraints of using these free tiers, and with increased utilisation, could lead to costs.
 
 Javascript lightbox gallery from:
 https://sachinchoolur.github.io/lightgallery.js/
