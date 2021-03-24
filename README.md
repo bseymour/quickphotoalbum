@@ -11,6 +11,8 @@ Live example : [https://quickphotoalbum.vercel.app/](https://quickphotoalbum.ver
 5) Images are subsequently requested from Cloudinary
 6) Album details are managed via a seperate .json file {album}-album-details.json
 7) Additionally a light box also enables images to be seen bigger, including fullscreen, and also a slideshow
+8) Alt text can also be managed via asset contextual metadata
+9) Also including multi-lingual alt-tags
 
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fbseymour%2Fquickphotoalbum) <a href="https://app.netlify.com/start/deploy?repository=https://github.com/bseymour/quickphotoalbum">
