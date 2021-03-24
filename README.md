@@ -7,6 +7,7 @@ A front-end-only approach to creating quick photo albums, powered by Cloudinary 
 3) A /list API request is made to Cloudinary based on the 'album' value
 4) JSON response is returned, and parsed to manipulate the DOM accordingly, including image requests
 5) Images are subsequently requested from Cloudinary
+6) Album details are managed via a seperate .json file {album}-album-details.json
 
 
 ** Notes **

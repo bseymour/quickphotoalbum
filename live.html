@@ -66,11 +66,21 @@
 
 
         function loadPageDetails() {
+            var album_details_url = "https://res.cloudinary.com/" + cloud_name + "/raw/upload/" + album_name + "-album-details.json";
+
             const title_object = document.getElementById('albumtitle');
             const description_object = document.getElementById('albumdescription');
 
-            title_object.innerHTML = "The '" + album_name + "' Album";
-            description_object.innerHTML = "Loaded from the '" + cloud_name + "' Account";    
+            fetch(album_details_url)
+                .then((resp) => resp.json())
+                .then(function (data) {
+                    let pageDetails = data;
+                    title_object.innerHTML = pageDetails.title;
+                    description_object.innerHTML = pageDetails.description;
+                })
+                .catch(function () {
+                    // todo : catch errors
+                });
         }
 
 
