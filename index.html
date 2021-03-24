@@ -4,13 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Photo Album</title>
+    <title>Quick Photo Album : powered by Cloudinary</title>
+
+    <style>
+        body {
+            box-sizing: border-box;
+            background: #eeeef1;
+            
+            
+        }
+    
+        h1 {
+            font-family: Georgia, serif;
+            font-weight: 700;
+            font-size: 3.15rem;
+        }
+    
+        h2 {
+            font-family: sans-serif;
+            font-weight: 300;
+            font-size: 1.77rem;
+        }
+
+        input[type=text] {
+            padding:10px;
+            margin:10px 0; 
+            border-radius:10px;
+
+            font-family: sans-serif;
+            font-weight: 200;
+            font-size: 1.17rem;
+        }
+
+        button {
+            /* remove default behavior */
+            appearance:none;
+            -webkit-appearance:none;
+
+            /* usual styles */
+            padding:10px;
+            border:none;
+            background-color:#3448c5;
+            color:#fff;
+            font-weight:600;
+            border-radius:5px;
+
+            font-family: sans-serif;
+            font-weight: 200;
+            font-size: 1.17rem;
+        }
+    
+    </style>
+
+
 </head>
 <body>
     <h1>Quick Photo Album</h1>
 
 
-    <input type="text" id="albumname" name="albumname" size="10">
+    <input type="text" id="albumname" name="albumname" size="20">
     <button id="gotoButton" onclick="location.href = './live.html?album=' + document.getElementById('albumname').value.toLowerCase(); ;">Go To Album</button>
 
     <script>
