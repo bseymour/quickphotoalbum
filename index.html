@@ -8,5 +8,26 @@
 </head>
 <body>
     <h1>Quick Photo Album</h1>
+
+
+    <input type="text" id="albumname" name="albumname" size="10">
+    <button id="gotoButton" onclick="location.href = './live.html?album=' + document.getElementById('albumname').value.toLowerCase(); ;">Go To Album</button>
+
+    <script>
+            // capture teh enter button press on the text input form
+            var input = document.getElementById("albumname");
+
+            input.addEventListener("keyup", function (event) {
+                // Number 13 is the enter key
+                if (event.keyCode === 13) {
+                    // Cancel the default action
+                    event.preventDefault();
+                    // trigger the goto button
+                    document.getElementById("gotoButton").click();
+                }
+            });
+    </script>
+
+
 </body>
 </html>
