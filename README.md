@@ -20,6 +20,14 @@ Live example : [https://quickphotoalbum.vercel.app/](https://quickphotoalbum.ver
   </a>
 
 
+------------------------------------------------
+To use with your own account, make 1 change :
+live.html 
+62: const cloud_name = 'quickalbum'; 
+^^ Change this to your Cloudinary cloudname ^^
+and ensure you have list API enabled
+------------------------------------------------
+
 
 ** Notes **
 1) Cloudinary provides generous free accounts which could be sufficient to power many projects, but if your storage, bandwidth or transforms exceed the available free credits, there are likely to be costs in utilising the service further 
