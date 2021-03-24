@@ -61,6 +61,8 @@
         // *** Change cloud_name to be the name of your Cloudinary account
         const cloud_name = 'quickalbum'; 
         
+        // language preference is for multi-lingual alt tags
+        const lang_preference = urlParams.get('lang');
 
         window.addEventListener('DOMContentLoaded', (event) => {
             if ((album_name) && (cloud_name)) {
@@ -118,6 +120,27 @@
                         img.class = "imageitem";
                         // initially, just a basic 300 x 300 image 
                         img.src = "https://res.cloudinary.com/" + cloud_name + "/image/upload/q_auto,f_auto/w_300,h_300,c_fill,g_auto/e_improve/" + imageitem.public_id + "." + imageitem.format;
+
+
+                        // driving alt tags via asset context metadata in Cloudinary
+                        // get the language preference from the querystring
+                        if (lang_preference) {
+                            altref = "alt_" + lang_preference;
+                            // todo: consider having an array of valid language codes to check agaisnt
+                        } else {
+                            //if no preference default to english
+                            altref = "alt_EN"
+                        }
+
+                        // reference the language specific context metadata
+                        // expects CTX metadata with key 'alt_EN' or other ISO code
+                        if (imageitem.context) {
+                            console.log(JSON.stringify(imageitem));
+                            img.alt = imageitem.context.custom[altref];
+                            img.title = imageitem.context.custom[altref];
+                            // using title to make visible on mouseover
+                        };
+
 
                         // link the lightgallery anchor to the img
                         lightgalleryAnchor.appendChild(img);
