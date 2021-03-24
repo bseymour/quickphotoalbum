@@ -30,6 +30,7 @@
         window.addEventListener('DOMContentLoaded', (event) => {
             if ((album_name) && (cloud_name)) {
                 loadPageDetails();
+                loadImages();
             };
 
         });
@@ -42,6 +43,28 @@
             title_object.innerHTML = "The '" + album_name + "' Album";
             description_object.innerHTML = "Loaded from the '" + cloud_name + "' Account";    
         }
+
+
+
+        function loadImages() {
+            var album_contents_url = "https://res.cloudinary.com/" + cloud_name + "/image/list/" + album_name + ".json";
+            const contents_object = document.getElementById('albumcontents');
+
+            fetch(album_contents_url)
+                .then((resp) => resp.json())
+                .then(function (data) {
+
+
+                    let imagelist = data.resources;
+
+                    contents_object.innerHTML = JSON.stringify(data.resources);
+                    
+                })
+                .catch(function () {
+                    // todo : catch errors
+                });
+
+        };
 
     </script>
 
