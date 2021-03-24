@@ -47,6 +47,8 @@
 
 
         function loadImages() {
+            // form the full Cloudinary /list request 
+            // note: /list needs to be approved on the account
             var album_contents_url = "https://res.cloudinary.com/" + cloud_name + "/image/list/" + album_name + ".json";
             const contents_object = document.getElementById('albumcontents');
 
@@ -54,10 +56,24 @@
                 .then((resp) => resp.json())
                 .then(function (data) {
 
+                    // create the DOM node that will contain the gallery
+                    imageDiv = document.createElement("div");
+                    imageDiv.id = "album";
+                    contents_object.appendChild(imageDiv);
 
                     let imagelist = data.resources;
+                    return imagelist.map(function (imageitem) {
 
-                    contents_object.innerHTML = JSON.stringify(data.resources);
+                        // create an image element for each item from the /list results 
+                        img = document.createElement("img");
+                        img.class = "imageitem";
+                        // initially, just a basic 300 x 300 image 
+                        img.src = "https://res.cloudinary.com/" + cloud_name + "/image/upload/q_auto,f_auto/w_300,h_300,c_fill/e_improve/" + imageitem.public_id + "." + imageitem.format;
+
+                        // append to the album container
+                        imageDiv.appendChild(img);
+                    })
+                    
                     
                 })
                 .catch(function () {
