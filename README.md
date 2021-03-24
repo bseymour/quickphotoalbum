@@ -1,7 +1,7 @@
 # Quick Photo Album
 A front-end-only approach to creating quick photo albums, powered by Cloudinary for image management, organisation, manipulation, optimisation and delivery.
 
-Live example : [https://quickphotoalbum.vercel.app/](https://quickphotoalbum.vercel.app/)
+Live example : [https://quickphotoalbum.vercel.app/](https://quickphotoalbum.vercel.app/)  
 ^^ Try searching for: cars, sunsets or motorbikes
 
 1) The page initially loads a placeholder tags and content
