@@ -7,7 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quick Photos Album - powered by Cloudinary</title>
 
-
+    <link type="text/css" rel="stylesheet" href="css/lightgallery.css" />
+    <script src="js/lightgallery.js"></script>
+    <script src="js/lg-autoplay.js"></script>
+    <script src="js/lg-fullscreen.js"></script>
 
     <style>
         body {
@@ -97,11 +100,15 @@
 
                     // create the DOM node that will contain the gallery
                     imageDiv = document.createElement("div");
-                    imageDiv.id = "album";
+                    imageDiv.id = "lightgallery";
                     contents_object.appendChild(imageDiv);
 
                     let imagelist = data.resources;
                     return imagelist.map(function (imageitem) {
+
+                        lightgalleryAnchor = document.createElement("a");
+                        lightgalleryAnchor.href = "https://res.cloudinary.com/" + cloud_name + "/image/upload/q_auto,f_auto/w_2000/e_improve/" + imageitem.public_id + "." + imageitem.format; 
+
 
                         // create an image element for each item from the /list results 
                         img = document.createElement("img");
@@ -109,8 +116,18 @@
                         // initially, just a basic 300 x 300 image 
                         img.src = "https://res.cloudinary.com/" + cloud_name + "/image/upload/q_auto,f_auto/w_300,h_300,c_fill/e_improve/" + imageitem.public_id + "." + imageitem.format;
 
+                        // link the lightgallery anchor to the img
+                        lightgalleryAnchor.appendChild(img);
+                        
                         // append to the album container
-                        imageDiv.appendChild(img);
+                        imageDiv.appendChild(lightgalleryAnchor);
+
+                        // trigger the lightgallery
+                        lightGallery(document.getElementById("lightgallery"),
+                        {
+                            animateThumb: true,
+                            download: false}
+                        ); 
                     })
                     
                     
@@ -122,6 +139,11 @@
         };
 
     </script>
+
+
+
+
+
 
 
 </body>
