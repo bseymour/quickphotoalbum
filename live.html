@@ -11,7 +11,7 @@
 
 <body>
     <div class="albumheader">
-        <h1 id="albumtitle">Album Title Holder</h1>
+        <h1 id="albumtitle">Album Title Placeholder</h1>
         <h2 id="albumdescription">If you can see this.... no data has been loaded</h2>
     </div>
 
@@ -19,9 +19,32 @@
     </div>
 
 
+    <script>
 
+        const urlParams = new URLSearchParams(window.location.search);
+        const album_name = urlParams.get('album');
+        // *** Change cloud_name to be the name of your Cloudinary account
+        const cloud_name = 'quickalbum'; 
+        
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            if ((album_name) && (cloud_name)) {
+                loadPageDetails();
+            };
+
+        });
+
+
+        function loadPageDetails() {
+            const title_object = document.getElementById('albumtitle');
+            const description_object = document.getElementById('albumdescription');
+
+            title_object.innerHTML = "The '" + album_name + "' Album";
+            description_object.innerHTML = "Loaded from the '" + cloud_name + "' Account";    
+        }
+
+    </script>
 
 
 </body>
-
 </html>
