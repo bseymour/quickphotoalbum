@@ -26,6 +26,12 @@
             font-size: 1.77rem;
         }
 
+        p {
+                font-family: sans-serif;
+                font-weight: 200;
+                font-size: 1.07rem;
+            }
+
         input[type=text] {
             padding:10px;
             margin:10px 0; 
@@ -64,6 +70,12 @@
 
     <input type="text" id="albumname" name="albumname" size="20">
     <button id="gotoButton" onclick="location.href = './live.html?album=' + document.getElementById('albumname').value.toLowerCase(); ;">Go To Album</button>
+
+    <p>^^ on the demo page, try searching for 'sunsets' or 'cars'</p>
+
+    <p>Project repo: <a href="https://github.com/bseymour/quickphotoalbum">https://github.com/bseymour/quickphotoalbum</a></p>
+
+
 
     <script>
             // capture teh enter button press on the text input form
