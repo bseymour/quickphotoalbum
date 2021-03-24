@@ -9,7 +9,7 @@
     <style>
         body {
             box-sizing: border-box;
-            background: #eeeef1;
+            background: #b6d2ff;
             
             
         }
@@ -31,6 +31,14 @@
                 font-weight: 200;
                 font-size: 1.07rem;
             }
+
+        a {
+            color : #3448c5;
+        }
+
+        a:hover{
+            color : #ff5050;
+        }
 
         input[type=text] {
             padding:10px;
@@ -60,21 +68,47 @@
             font-size: 1.17rem;
         }
     
+        #searchbar {
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            text-align: center;
+            margin-top: 200px;
+        }
+
+
+        #project {
+           position: fixed;
+            bottom: 200px;
+            width: 100%;
+        }
+
+        .center {
+            width: 600px;
+            margin: 0 auto;
+             text-align: center;
+        }
     </style>
 
 
 </head>
 <body>
+    <div id="searchbar">
     <h1>Quick Photo Album</h1>
 
 
     <input type="text" id="albumname" name="albumname" size="20">
     <button id="gotoButton" onclick="location.href = './live.html?album=' + document.getElementById('albumname').value.toLowerCase(); ;">Go To Album</button>
 
-    <p>^^ on the demo page, try searching for 'sunsets' or 'cars'</p>
+    <p>^^ try entering 'sunsets' or 'cars'</p>
 
-    <p>Project repo: <a href="https://github.com/bseymour/quickphotoalbum">https://github.com/bseymour/quickphotoalbum</a></p>
+    </div>
 
+    <div id="project">
+        <p class="center">Quick Photo Album is a project by <a href="https://benseymour.com/">Ben</a> and Patrick powered by <a href="https://cloudinary.com/">Cloudinary</a>.</p>
+        <p class="center">Project repo: <a href="https://github.com/bseymour/quickphotoalbum">https://github.com/bseymour/quickphotoalbum</a></p>
+    </div>
 
 
     <script>
